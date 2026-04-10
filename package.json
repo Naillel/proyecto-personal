@@ -1,0 +1,26 @@
+{
+  "name": "proyecto-personal",
+  "version": "1.0.0",
+  "description": "Mi proyecto Vue",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "vite build && gh-pages -d dist"
+  },
+  "keywords": [],
+  "author": "Naillel",
+  "license": "ISC",
+  "packageManager": "pnpm@10.32.1",
+  "type": "module",
+  "dependencies": {
+    "vue": "^3.5.32"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.5",
+    "gh-pages": "^6.3.0",
+    "vite": "^8.0.8"
+  }
+}
