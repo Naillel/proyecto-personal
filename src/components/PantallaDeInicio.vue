@@ -5,7 +5,7 @@ defineEmits(['start'])
 <template>
   <section class="pantalla-inicio">
     <div class="carta-inicio">
-      <span class="emoji">🦜</span>
+      <span class="emoji"></span>
       <h1 class="titulo-inicio">TaxoQuest CR</h1>
       <p class="subtitulo-inicio">
         Adivina el animal secreto de la fauna costarricense.<br>

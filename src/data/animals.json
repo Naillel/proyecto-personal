@@ -4,224 +4,279 @@
     "nombre": "Quetzal",
     "nombreCientifico": "Pharomachrus mocinno",
     "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Quetzal_E7_cropped.jpg/320px-Quetzal_E7_cropped.jpg",
-    "taxonomia": {
-      "reino":   "Animalia",
-      "filo":    "Chordata",
-      "clase":   "Aves",
-      "orden":   "Trogoniformes",
-      "familia": "Trogonidae",
-      "genero":  "Pharomachrus",
-      "especie": "P. mocinno"
-    }
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Aves", "orden": "Trogoniformes", "familia": "Trogonidae", "genero": "Pharomachrus", "especie": "P. mocinno" }
   },
   {
     "id": 2,
     "nombre": "Perezoso de dos dedos",
     "nombreCientifico": "Choloepus hoffmanni",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Bradypus.jpg/320px-Bradypus.jpg",
-    "taxonomia": {
-      "reino":   "Animalia",
-      "filo":    "Chordata",
-      "clase":   "Mammalia",
-      "orden":   "Pilosa",
-      "familia": "Choloepodidae",
-      "genero":  "Choloepus",
-      "especie": "C. hoffmanni"
-    }
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Choloepus_hoffmanni_-_Ramirez.jpg/320px-Choloepus_hoffmanni_-_Ramirez.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Pilosa", "familia": "Choloepodidae", "genero": "Choloepus", "especie": "C. hoffmanni" }
   },
   {
     "id": 3,
     "nombre": "Danta",
     "nombreCientifico": "Tapirus bairdii",
     "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Tapirus_bairdii.jpg/320px-Tapirus_bairdii.jpg",
-    "taxonomia": {
-      "reino":   "Animalia",
-      "filo":    "Chordata",
-      "clase":   "Mammalia",
-      "orden":   "Perissodactyla",
-      "familia": "Tapiridae",
-      "genero":  "Tapirus",
-      "especie": "T. bairdii"
-    }
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Perissodactyla", "familia": "Tapiridae", "genero": "Tapirus", "especie": "T. bairdii" }
   },
   {
     "id": 4,
     "nombre": "Jaguar",
     "nombreCientifico": "Panthera onca",
     "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Standing_jaguar.jpg/320px-Standing_jaguar.jpg",
-    "taxonomia": {
-      "reino":   "Animalia",
-      "filo":    "Chordata",
-      "clase":   "Mammalia",
-      "orden":   "Carnivora",
-      "familia": "Felidae",
-      "genero":  "Panthera",
-      "especie": "P. onca"
-    }
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Carnivora", "familia": "Felidae", "genero": "Panthera", "especie": "P. onca" }
   },
   {
     "id": 5,
     "nombre": "Rana Venenosa Roja",
     "nombreCientifico": "Oophaga pumilio",
     "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Oophaga_pumilio_-_raef%C3%A6ldet_pilgiftfr%C3%B8.jpg/320px-Oophaga_pumilio_-_raef%C3%A6ldet_pilgiftfr%C3%B8.jpg",
-    "taxonomia": {
-      "reino":   "Animalia",
-      "filo":    "Chordata",
-      "clase":   "Amphibia",
-      "orden":   "Anura",
-      "familia": "Dendrobatidae",
-      "genero":  "Oophaga",
-      "especie": "O. pumilio"
-    }
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Amphibia", "orden": "Anura", "familia": "Dendrobatidae", "genero": "Oophaga", "especie": "O. pumilio" }
   },
   {
     "id": 6,
     "nombre": "Tortuga Baula",
     "nombreCientifico": "Dermochelys coriacea",
     "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Leatherback_sea_turtle_Tinglar_USVI_%285839996547%29.jpg/320px-Leatherback_sea_turtle_Tinglar_USVI_%285839996547%29.jpg",
-    "taxonomia": {
-      "reino":   "Animalia",
-      "filo":    "Chordata",
-      "clase":   "Reptilia",
-      "orden":   "Testudines",
-      "familia": "Dermochelyidae",
-      "genero":  "Dermochelys",
-      "especie": "D. coriacea"
-    }
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Reptilia", "orden": "Testudines", "familia": "Dermochelyidae", "genero": "Dermochelys", "especie": "D. coriacea" }
   },
   {
     "id": 7,
     "nombre": "Mono Araña",
     "nombreCientifico": "Ateles geoffroyi",
     "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Spider_Monkey_2_edit.jpg/320px-Spider_Monkey_2_edit.jpg",
-    "taxonomia": {
-      "reino":   "Animalia",
-      "filo":    "Chordata",
-      "clase":   "Mammalia",
-      "orden":   "Primates",
-      "familia": "Atelidae",
-      "genero":  "Ateles",
-      "especie": "A. geoffroyi"
-    }
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Primates", "familia": "Atelidae", "genero": "Ateles", "especie": "A. geoffroyi" }
   },
   {
     "id": 8,
     "nombre": "Pizote",
     "nombreCientifico": "Nasua narica",
     "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Coatimundi2.jpg/320px-Coatimundi2.jpg",
-    "taxonomia": {
-      "reino":   "Animalia",
-      "filo":    "Chordata",
-      "clase":   "Mammalia",
-      "orden":   "Carnivora",
-      "familia": "Procyonidae",
-      "genero":  "Nasua",
-      "especie": "N. narica"
-    }
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Carnivora", "familia": "Procyonidae", "genero": "Nasua", "especie": "N. narica" }
   },
   {
     "id": 9,
     "nombre": "Tucán Pico Iris",
     "nombreCientifico": "Ramphastos sulfuratus",
     "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Ramphastos_sulfuratus_-Belize_Zoo-8.jpg/320px-Ramphastos_sulfuratus_-Belize_Zoo-8.jpg",
-    "taxonomia": {
-      "reino":   "Animalia",
-      "filo":    "Chordata",
-      "clase":   "Aves",
-      "orden":   "Piciformes",
-      "familia": "Ramphastidae",
-      "genero":  "Ramphastos",
-      "especie": "R. sulfuratus"
-    }
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Aves", "orden": "Piciformes", "familia": "Ramphastidae", "genero": "Ramphastos", "especie": "R. sulfuratus" }
   },
   {
     "id": 10,
     "nombre": "Serpiente Terciopelo",
     "nombreCientifico": "Bothrops asper",
     "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Bothrops_asper.jpg/320px-Bothrops_asper.jpg",
-    "taxonomia": {
-      "reino":   "Animalia",
-      "filo":    "Chordata",
-      "clase":   "Reptilia",
-      "orden":   "Squamata",
-      "familia": "Viperidae",
-      "genero":  "Bothrops",
-      "especie": "B. asper"
-    }
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Reptilia", "orden": "Squamata", "familia": "Viperidae", "genero": "Bothrops", "especie": "B. asper" }
   },
   {
     "id": 11,
     "nombre": "Mariposa Morpho Azul",
     "nombreCientifico": "Morpho helenor",
     "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Morpho_rhetenor_helena.jpg/320px-Morpho_rhetenor_helena.jpg",
-    "taxonomia": {
-      "reino":   "Animalia",
-      "filo":    "Arthropoda",
-      "clase":   "Insecta",
-      "orden":   "Lepidoptera",
-      "familia": "Nymphalidae",
-      "genero":  "Morpho",
-      "especie": "M. helenor"
-    }
+    "taxonomia": { "reino": "Animalia", "filo": "Arthropoda", "clase": "Insecta", "orden": "Lepidoptera", "familia": "Nymphalidae", "genero": "Morpho", "especie": "M. helenor" }
   },
   {
     "id": 12,
     "nombre": "Cocodrilo Americano",
     "nombreCientifico": "Crocodylus acutus",
     "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Crocodylus_acutus_mexico_1.jpg/320px-Crocodylus_acutus_mexico_1.jpg",
-    "taxonomia": {
-      "reino":   "Animalia",
-      "filo":    "Chordata",
-      "clase":   "Reptilia",
-      "orden":   "Crocodilia",
-      "familia": "Crocodylidae",
-      "genero":  "Crocodylus",
-      "especie": "C. acutus"
-    }
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Reptilia", "orden": "Crocodilia", "familia": "Crocodylidae", "genero": "Crocodylus", "especie": "C. acutus" }
   },
   {
     "id": 13,
     "nombre": "Hormiga Bala",
     "nombreCientifico": "Paraponera clavata",
     "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Paraponera_clavata1.jpg/320px-Paraponera_clavata1.jpg",
-    "taxonomia": {
-      "reino":   "Animalia",
-      "filo":    "Arthropoda",
-      "clase":   "Insecta",
-      "orden":   "Hymenoptera",
-      "familia": "Formicidae",
-      "genero":  "Paraponera",
-      "especie": "P. clavata"
-    }
+    "taxonomia": { "reino": "Animalia", "filo": "Arthropoda", "clase": "Insecta", "orden": "Hymenoptera", "familia": "Formicidae", "genero": "Paraponera", "especie": "P. clavata" }
   },
   {
     "id": 14,
     "nombre": "Delfín Manchado Pantropical",
     "nombreCientifico": "Stenella attenuata",
     "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Stenella_attenuata.jpg/320px-Stenella_attenuata.jpg",
-    "taxonomia": {
-      "reino":   "Animalia",
-      "filo":    "Chordata",
-      "clase":   "Mammalia",
-      "orden":   "Artiodactyla",
-      "familia": "Delphinidae",
-      "genero":  "Stenella",
-      "especie": "S. attenuata"
-    }
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Artiodactyla", "familia": "Delphinidae", "genero": "Stenella", "especie": "S. attenuata" }
   },
   {
     "id": 15,
     "nombre": "Lapa Roja",
     "nombreCientifico": "Ara macao",
     "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Scarlet-Macaw.jpg/320px-Scarlet-Macaw.jpg",
-    "taxonomia": {
-      "reino":   "Animalia",
-      "filo":    "Chordata",
-      "clase":   "Aves",
-      "orden":   "Psittaciformes",
-      "familia": "Psittacidae",
-      "genero":  "Ara",
-      "especie": "A. macao"
-    }
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Aves", "orden": "Psittaciformes", "familia": "Psittacidae", "genero": "Ara", "especie": "A. macao" }
+  },
+  {
+    "id": 16,
+    "nombre": "Mono Capuchino",
+    "nombreCientifico": "Cebus imitator",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Capuchin_Costa_Rica.jpg/320px-Capuchin_Costa_Rica.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Primates", "familia": "Cebidae", "genero": "Cebus", "especie": "C. imitator" }
+  },
+  {
+    "id": 17,
+    "nombre": "Iguana Verde",
+    "nombreCientifico": "Iguana iguana",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Green_iguana_-_melbourne_zoo.jpg/320px-Green_iguana_-_melbourne_zoo.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Reptilia", "orden": "Squamata", "familia": "Iguanidae", "genero": "Iguana", "especie": "I. iguana" }
+  },
+  {
+    "id": 18,
+    "nombre": "Puma",
+    "nombreCientifico": "Puma concolor",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Puma_sleeping.jpg/320px-Puma_sleeping.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Carnivora", "familia": "Felidae", "genero": "Puma", "especie": "P. concolor" }
+  },
+  {
+    "id": 19,
+    "nombre": "Pelícano Pardo",
+    "nombreCientifico": "Pelecanus occidentalis",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Brown_pelican.jpg/320px-Brown_pelican.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Aves", "orden": "Pelecaniformes", "familia": "Pelecanidae", "genero": "Pelecanus", "especie": "P. occidentalis" }
+  },
+  {
+    "id": 20,
+    "nombre": "Oso Hormiguero Gigante",
+    "nombreCientifico": "Myrmecophaga tridactyla",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Tamandua_2.jpg/320px-Tamandua_2.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Pilosa", "familia": "Myrmecophagidae", "genero": "Myrmecophaga", "especie": "M. tridactyla" }
+  },
+  {
+    "id": 21,
+    "nombre": "Tiburón Toro",
+    "nombreCientifico": "Carcharhinus leucas",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Bull_shark.jpg/320px-Bull_shark.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Chondrichthyes", "orden": "Carcharhiniformes", "familia": "Carcharhinidae", "genero": "Carcharhinus", "especie": "C. leucas" }
+  },
+  {
+    "id": 22,
+    "nombre": "Guacamayo Verde Mayor",
+    "nombreCientifico": "Ara ambiguus",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ara_ambiguus_-flying-8.jpg/320px-Ara_ambiguus_-flying-8.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Aves", "orden": "Psittaciformes", "familia": "Psittacidae", "genero": "Ara", "especie": "A. ambiguus" }
+  },
+  {
+    "id": 23,
+    "nombre": "Rana de Ojos Rojos",
+    "nombreCientifico": "Agalychnis callidryas",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Agalychnis_callidryas.jpg/320px-Agalychnis_callidryas.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Amphibia", "orden": "Anura", "familia": "Phyllomedusidae", "genero": "Agalychnis", "especie": "A. callidryas" }
+  },
+  {
+    "id": 24,
+    "nombre": "Manatí del Caribe",
+    "nombreCientifico": "Trichechus manatus",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/FL_fig-1.jpg/320px-FL_fig-1.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Sirenia", "familia": "Trichechidae", "genero": "Trichechus", "especie": "T. manatus" }
+  },
+  {
+    "id": 25,
+    "nombre": "Zopilote Rey",
+    "nombreCientifico": "Sarcoramphus papa",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Sarcoramphus_papa_-perching-8.jpg/320px-Sarcoramphus_papa_-perching-8.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Aves", "orden": "Cathartiformes", "familia": "Cathartidae", "genero": "Sarcoramphus", "especie": "S. papa" }
+  },
+  {
+    "id": 26,
+    "nombre": "Ocelote",
+    "nombreCientifico": "Leopardus pardalis",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Ocelot_at_the_San_Diego_Zoo_14.jpg/320px-Ocelot_at_the_San_Diego_Zoo_14.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Carnivora", "familia": "Felidae", "genero": "Leopardus", "especie": "L. pardalis" }
+  },
+  {
+    "id": 27,
+    "nombre": "Serpiente de Coral",
+    "nombreCientifico": "Micrurus nigrocinctus",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Micrurus_nigrocinctus.jpg/320px-Micrurus_nigrocinctus.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Reptilia", "orden": "Squamata", "familia": "Elapidae", "genero": "Micrurus", "especie": "M. nigrocinctus" }
+  },
+  {
+    "id": 28,
+    "nombre": "Mono Congo",
+    "nombreCientifico": "Alouatta palliata",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Alouatta_palliata_-Barro_Colorado_Island%2C_Panama-8.jpg/320px-Alouatta_palliata_-Barro_Colorado_Island%2C_Panama-8.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Primates", "familia": "Atelidae", "genero": "Alouatta", "especie": "A. palliata" }
+  },
+  {
+    "id": 29,
+    "nombre": "Cangrejo Moro",
+    "nombreCientifico": "Cardisoma guanhumi",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Cardisoma_guanhumi.jpg/320px-Cardisoma_guanhumi.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Arthropoda", "clase": "Malacostraca", "orden": "Decapoda", "familia": "Gecarcinidae", "genero": "Cardisoma", "especie": "C. guanhumi" }
+  },
+  {
+    "id": 30,
+    "nombre": "Águila Harpía",
+    "nombreCientifico": "Harpia harpyja",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Harpia_harpyja-20080204.jpg/320px-Harpia_harpyja-20080204.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Aves", "orden": "Accipitriformes", "familia": "Accipitridae", "genero": "Harpia", "especie": "H. harpyja" }
+  },
+  {
+    "id": 31,
+    "nombre": "Basilisco Verde",
+    "nombreCientifico": "Basiliscus plumifrons",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Basiliscus_plumifrons.jpg/320px-Basiliscus_plumifrons.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Reptilia", "orden": "Squamata", "familia": "Corytophanidae", "genero": "Basiliscus", "especie": "B. plumifrons" }
+  },
+  {
+    "id": 32,
+    "nombre": "Nutria Neotropical",
+    "nombreCientifico": "Lontra longicaudis",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Lontra_longicaudis-01.jpg/320px-Lontra_longicaudis-01.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Carnivora", "familia": "Mustelidae", "genero": "Lontra", "especie": "L. longicaudis" }
+  },
+  {
+    "id": 33,
+    "nombre": "Escarabajo Hércules",
+    "nombreCientifico": "Dynastes hercules",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Dynastes_hercules_ecuatorianus_MHNT.jpg/320px-Dynastes_hercules_ecuatorianus_MHNT.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Arthropoda", "clase": "Insecta", "orden": "Coleoptera", "familia": "Scarabaeidae", "genero": "Dynastes", "especie": "D. hercules" }
+  },
+  {
+    "id": 34,
+    "nombre": "Garceta Grande",
+    "nombreCientifico": "Ardea alba",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Ardea_alba_-Florida-8.jpg/320px-Ardea_alba_-Florida-8.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Aves", "orden": "Pelecaniformes", "familia": "Ardeidae", "genero": "Ardea", "especie": "A. alba" }
+  },
+  {
+    "id": 35,
+    "nombre": "Saíno",
+    "nombreCientifico": "Pecari tajacu",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Peccary_2.jpg/320px-Peccary_2.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Artiodactyla", "familia": "Tayassuidae", "genero": "Pecari", "especie": "P. tajacu" }
+  },
+  {
+    "id": 36,
+    "nombre": "Pulpo de Arrecife",
+    "nombreCientifico": "Octopus vulgaris",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Octopus_vulgaris_02.JPG/320px-Octopus_vulgaris_02.JPG",
+    "taxonomia": { "reino": "Animalia", "filo": "Mollusca", "clase": "Cephalopoda", "orden": "Octopoda", "familia": "Octopodidae", "genero": "Octopus", "especie": "O. vulgaris" }
+  },
+  {
+    "id": 37,
+    "nombre": "Pájaro Campana",
+    "nombreCientifico": "Procnias tricarunculatus",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Three-wattled_Bellbird.jpg/320px-Three-wattled_Bellbird.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Aves", "orden": "Passeriformes", "familia": "Cotingidae", "genero": "Procnias", "especie": "P. tricarunculatus" }
+  },
+  {
+    "id": 38,
+    "nombre": "Salamandra Tica",
+    "nombreCientifico": "Bolitoglossa colonnea",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Bolitoglossa_colonnea.jpg/320px-Bolitoglossa_colonnea.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Amphibia", "orden": "Urodela", "familia": "Plethodontidae", "genero": "Bolitoglossa", "especie": "B. colonnea" }
+  },
+  {
+    "id": 39,
+    "nombre": "Camarón Pistola",
+    "nombreCientifico": "Alpheus heterochaelis",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Alpheus_heterochaelis.jpg/320px-Alpheus_heterochaelis.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Arthropoda", "clase": "Malacostraca", "orden": "Decapoda", "familia": "Alpheidae", "genero": "Alpheus", "especie": "A. heterochaelis" }
+  },
+  {
+    "id": 40,
+    "nombre": "Yigüirro",
+    "nombreCientifico": "Turdus grayi",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Clay-colored_Thrush_-_Turdus_grayi.jpg/320px-Clay-colored_Thrush_-_Turdus_grayi.jpg",
+    "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Aves", "orden": "Passeriformes", "familia": "Turdidae", "genero": "Turdus", "especie": "T. grayi" }
   }
 ]

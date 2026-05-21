@@ -32,7 +32,7 @@ function restart() {
 }
 .resultado-contenedor {
   text-align: center;
-  background: #fff;
+  background: #40826D;
   padding: 2rem;
   border-radius: 1.5rem;
   box-shadow: 0 12px 40px rgba(0,0,0,0.12);
