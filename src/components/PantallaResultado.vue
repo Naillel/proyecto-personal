@@ -1,52 +1,67 @@
 ﻿<script setup>
-const props = defineProps({
-  isWon: {
-    type: Boolean,
-    required: true,
-  },
+defineProps({
+  isWon: { type: Boolean, required: true }
 })
-const emit = defineEmits(['restart'])
-function restart() {
-  emit('restart')
-}
+
+defineEmits(['restart'])
 </script>
 
 <template>
   <section class="pantalla-resultado">
-    <div class="resultado-contenedor">
-      <h1>{{ isWon ? '¡Ganaste!' : 'Inténtalo de nuevo' }}</h1>
-      <p>
-        {{ isWon ? 'Has adivinado el animal secreto.' : 'El juego terminó, pero puedes volver a empezar.' }}
+    <div class="resultado-card">
+      <span class="resultado-emoji">{{ isWon ? '🎉' : '😢' }}</span>
+
+      <h1 class="resultado-titulo">
+        {{ isWon ? '¡Lo lograste!' : '¡Casi!' }}
+      </h1>
+
+      <p class="resultado-mensaje">
+        {{ isWon
+          ? 'Encontraste el animal secreto de la fauna costarricense.'
+          : 'El árbol de la vida es grande. ¡Inténtalo de nuevo!' }}
       </p>
-      <button type="button" @click="restart">Reiniciar</button>
+
+      <button class="btn-reiniciar" @click="$emit('restart')">
+        Jugar de nuevo 🔄
+      </button>
     </div>
   </section>
 </template>
 
 <style scoped>
 .pantalla-resultado {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   place-items: center;
-  padding: 1.5rem;
+  background: linear-gradient(135deg, #1a4731 0%, #2d6a4f 60%, #52b788 100%);
+  padding: 1rem;
 }
-.resultado-contenedor {
-  text-align: center;
-  background: #40826D;
-  padding: 2rem;
+
+.resultado-card {
+  background: #fff;
   border-radius: 1.5rem;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  padding: 2.5rem 2rem;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,.2);
 }
-button {
-  margin-top: 1.5rem;
+
+.resultado-emoji  { font-size: 4rem; }
+.resultado-titulo { font-size: 2rem; font-weight: 800; color: #1a4731; margin: .5rem 0; }
+.resultado-mensaje { color: #555; line-height: 1.6; margin-bottom: 2rem; }
+
+.btn-reiniciar {
   background: #2d6a4f;
   color: #fff;
   border: none;
   border-radius: 999px;
-  padding: 0.9rem 2rem;
+  padding: .9rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
-}
-button:hover {
-  background: #1a4731;
+  transition: background .2s;
+
+  &:hover { background: #1a4731; }
 }
 </style>

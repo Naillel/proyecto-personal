@@ -1,5 +1,5 @@
 <script setup>
-defineEmits(['start'])
+const emit = defineEmits(['start'])
 </script>
 
 <template>
@@ -22,7 +22,7 @@ defineEmits(['start'])
         <span class="tax-badge highlight">Especie ✓</span>
       </div>
 
-      <button class="btn-start" @click="$emit('start')">
+      <button class="btn-start" @click="emit('start')">
         ¡Jugar!
       </button>
     </div>

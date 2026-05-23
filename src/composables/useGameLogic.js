@@ -1,100 +1,84 @@
 import { ref, computed } from 'vue'
 
-// Niveles taxonómicos en orden de generalidad (de más amplio a más específico)
-const TAXONOMY_LEVELS = ['reino', 'filo', 'clase', 'orden', 'familia', 'genero', 'especie']
+const TAXONOMY_KEYS = ['reino', 'filo', 'clase', 'orden', 'familia', 'genero', 'especie']
 
-/**
- * Calcula el color de cada nivel taxonómico comparando
- * el animal adivinado contra el animal secreto.
- *
- * 🟩 verde   → ese nivel coincide exactamente
- * 🟨 amarillo → ese nivel NO coincide pero algún nivel SUPERIOR sí coincide
- * ⬜ gris    → no hay ninguna coincidencia en ese nivel ni en superiores
- */
-function buildTaxonomyResult(guess, secret) {
-  // Encontramos el índice del nivel más profundo donde coinciden
-  const lastMatchIndex = TAXONOMY_LEVELS.reduce((lastMatch, level, index) => {
-    return guess.taxonomia[level] === secret.taxonomia[level] ? index : lastMatch
-  }, -1)
+// 'correct' | 'warm' | 'cold'
+function calcularCalor(secreto, intento, nivel) {
+  const nivelIndex = TAXONOMY_KEYS.indexOf(nivel)
 
-  return TAXONOMY_LEVELS.map((level, index) => ({
-    nivel: level,
-    valor: guess.taxonomia[level],
-    estado:
-      guess.taxonomia[level] === secret.taxonomia[level] ? 'correcto'   // 🟩
-      : index <= lastMatchIndex                            ? 'cercano'   // 🟨
-      :                                                     'lejano'    // ⬜
+  if (secreto.taxonomia[nivel] === intento.taxonomia[nivel]) return 'correct'
+
+  const isAncestroComun = TAXONOMY_KEYS
+    .slice(0, nivelIndex)
+    .every(k => secreto.taxonomia[k] === intento.taxonomia[k])
+
+  return isAncestroComun ? 'warm' : 'cold'
+}
+
+function construirResultadoIntento(secreto, intento) {
+  const niveles = TAXONOMY_KEYS.map(nivel => ({
+    nivel,
+    valor: intento.taxonomia[nivel],
+    calor: calcularCalor(secreto, intento, nivel)
   }))
+
+  const isGanador = niveles.every(n => n.calor === 'correct')
+
+  return { animal: intento, niveles, isGanador }
 }
 
 export function useGameLogic() {
-  const animals      = ref([])
-  const secretAnimal = ref(null)
-  const guesses      = ref([])        // [{ animal, result }]
-  const isLoading    = ref(true)
-  const hasError     = ref(false)
-  const isWon        = ref(false)
+  const animales      = ref([])
+  const secreto       = ref(null)
+  const intentos      = ref([])
+  const isLoading     = ref(true)
+  const isGameOver    = ref(false)
+  const isWon         = ref(false)
 
-  // Lista de IDs ya intentados para deshabilitar opciones en el dropdown
-  const guessedIds = computed(() =>
-    guesses.value.map(g => g.animal.id)
+  const animalesUsados = computed(() =>
+    new Set(intentos.value.map(i => i.animal.id))
   )
 
-  // Animales que todavía no se han intentado
-  const availableAnimals = computed(() =>
-    animals.value.filter(a => !guessedIds.value.includes(a.id))
+  const animalesDisponibles = computed(() =>
+    animales.value.filter(a => !animalesUsados.value.has(a.id))
   )
 
-  async function loadAnimals() {
-    try {
-      const response = await fetch('/src/data/animals.json')
-      const data     = await response.json()
-      animals.value  = data
+  async function iniciarJuego() {
+    isLoading.value = true
+    intentos.value  = []
+    isGameOver.value = false
+    isWon.value     = false
 
-      // Elegir animal secreto aleatorio
-      const randomIndex  = Math.floor(Math.random() * data.length)
-      secretAnimal.value = data[randomIndex]
-    } catch {
-      hasError.value = true
-    } finally {
-      isLoading.value = false
-    }
+    const res  = await fetch('/proyecto-personal/data/animals.json')
+    animales.value = await res.json()
+
+    const indiceAleatorio = Math.floor(Math.random() * animales.value.length)
+    secreto.value = animales.value[indiceAleatorio]
+
+    isLoading.value = false
   }
 
-  function submitGuess(animal) {
-    // Evitar duplicados
-    if (guessedIds.value.includes(animal.id)) return
+  function hacerIntento(animal) {
+    if (isGameOver.value) return
 
-    const result = buildTaxonomyResult(animal, secretAnimal.value)
+    const resultado = construirResultadoIntento(secreto.value, animal)
+    intentos.value = [resultado, ...intentos.value]
 
-    guesses.value = [
-      { animal, result },
-      ...guesses.value   // los nuevos intentos van arriba
-    ]
-
-    if (animal.id === secretAnimal.value.id) {
+    if (resultado.isGanador) {
+      isGameOver.value = true
       isWon.value = true
     }
   }
 
-  function resetGame() {
-    guesses.value  = []
-    isWon.value    = false
-    isLoading.value = true
-    loadAnimals()
-  }
-
   return {
-    animals,
-    secretAnimal,
-    guesses,
+    animales,
+    secreto,
+    intentos,
     isLoading,
-    hasError,
+    isGameOver,
     isWon,
-    availableAnimals,
-    guessedIds,
-    loadAnimals,
-    submitGuess,
-    resetGame
+    animalesDisponibles,
+    iniciarJuego,
+    hacerIntento
   }
 }

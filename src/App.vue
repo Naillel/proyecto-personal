@@ -1,10 +1,9 @@
 <script setup>
 import { ref } from 'vue'
-import PantallaInicio from './components/PantallaDeInicio.vue'
-import GameBoard   from './components/GameBoard.vue'
-import PantallaResultados from './components/PantallaResultado.vue'
+import PantallaDeInicio   from './components/PantallaDeInicio.vue'
+import GameBoard          from './components/GameBoard.vue'
+import PantallaResultado  from './components/PantallaResultado.vue'
 
-// 'start' | 'game' | 'result'
 const screen = ref('start')
 const isWon  = ref(false)
 
@@ -24,7 +23,7 @@ function handleRestart() {
 
 <template>
   <main class="app">
-    <PantallaInicio
+    <PantallaDeInicio
       v-if="screen === 'start'"
       @start="handleStart"
     />
@@ -32,7 +31,7 @@ function handleRestart() {
       v-else-if="screen === 'game'"
       @end="handleGameEnd"
     />
-    <PantallaResultados
+    <PantallaResultado
       v-else-if="screen === 'result'"
       :is-won="isWon"
       @restart="handleRestart"
