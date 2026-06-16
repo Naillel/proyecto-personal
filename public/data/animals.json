@@ -3,42 +3,42 @@
     "id": 1,
     "nombre": "Quetzal",
     "nombreCientifico": "Pharomachrus mocinno",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Quetzal_E7_cropped.jpg/320px-Quetzal_E7_cropped.jpg",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/7/70/Quetzal01.jpg",
     "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Aves", "orden": "Trogoniformes", "familia": "Trogonidae", "genero": "Pharomachrus", "especie": "P. mocinno" }
   },
   {
     "id": 2,
     "nombre": "Perezoso de dos dedos",
     "nombreCientifico": "Choloepus hoffmanni",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Choloepus_hoffmanni_-_Ramirez.jpg/320px-Choloepus_hoffmanni_-_Ramirez.jpg",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/7/71/Choloepus_hoffmanni_%28Puerto_Viejo%2C_CR%29_crop.jpg",
     "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Pilosa", "familia": "Choloepodidae", "genero": "Choloepus", "especie": "C. hoffmanni" }
   },
   {
     "id": 3,
     "nombre": "Danta",
     "nombreCientifico": "Tapirus bairdii",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Tapirus_bairdii.jpg/320px-Tapirus_bairdii.jpg",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Central_American_Tapir-Belize20.jpg",
     "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Perissodactyla", "familia": "Tapiridae", "genero": "Tapirus", "especie": "T. bairdii" }
   },
   {
     "id": 4,
     "nombre": "Jaguar",
     "nombreCientifico": "Panthera onca",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Standing_jaguar.jpg/320px-Standing_jaguar.jpg",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Jaguar_%28Panthera_onca_palustris%29_female_Piquiri_River_2.JPG",
     "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Mammalia", "orden": "Carnivora", "familia": "Felidae", "genero": "Panthera", "especie": "P. onca" }
   },
   {
     "id": 5,
     "nombre": "Rana Venenosa Roja",
     "nombreCientifico": "Oophaga pumilio",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Oophaga_pumilio_-_raef%C3%A6ldet_pilgiftfr%C3%B8.jpg/320px-Oophaga_pumilio_-_raef%C3%A6ldet_pilgiftfr%C3%B8.jpg",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Dendrobates_pumilio.jpg",
     "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Amphibia", "orden": "Anura", "familia": "Dendrobatidae", "genero": "Oophaga", "especie": "O. pumilio" }
   },
   {
     "id": 6,
     "nombre": "Tortuga Baula",
     "nombreCientifico": "Dermochelys coriacea",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Leatherback_sea_turtle_Tinglar_USVI_%285839996547%29.jpg/320px-Leatherback_sea_turtle_Tinglar_USVI_%285839996547%29.jpg",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Leatherback_sea_turtle_Tinglar%2C_USVI_%285839996547%29.jpg",
     "taxonomia": { "reino": "Animalia", "filo": "Chordata", "clase": "Reptilia", "orden": "Testudines", "familia": "Dermochelyidae", "genero": "Dermochelys", "especie": "D. coriacea" }
   },
   {

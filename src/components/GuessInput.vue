@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, nextTick } from 'vue'
 
 const props = defineProps({
   animalesDisponibles: { type: Array, required: true },
@@ -8,8 +8,9 @@ const props = defineProps({
 
 const emit = defineEmits(['guess'])
 
-const query        = ref('')
-const isOpen       = ref(false)
+const query   = ref('')
+const isOpen  = ref(false)
+const inputEl = ref(null)
 
 const sugerencias = computed(() => {
   const q = query.value.trim().toLowerCase()
@@ -19,101 +20,139 @@ const sugerencias = computed(() => {
     .slice(0, 6)
 })
 
-function seleccionar(animal) {
+async function seleccionar(animal) {
   emit('guess', animal)
   query.value = ''
   isOpen.value = false
-}
-
-function onInput() {
-  isOpen.value = true
+  // remover foco para evitar que la lista reaparezca
+  await nextTick()
+  inputEl.value?.blur()
 }
 
 function onBlur() {
-  // Pequeño delay para que el click en sugerencia se registre primero
   setTimeout(() => { isOpen.value = false }, 150)
+}
+function onInput() {
+  isOpen.value = query.value.trim().length > 0
 }
 </script>
 
 <template>
-  <div class="guess-input">
-    <div class="input-wrap">
+  <div class="gi-wrap">
+    <div class="gi-input-row">
       <input
+        class="gi-input"
         type="text"
-        class="input"
-        placeholder="Escribe un animal..."
+        placeholder="Escribe el nombre de un animal..."
         :disabled="disabled"
         v-model="query"
         @input="onInput"
+        ref="inputEl"
         @blur="onBlur"
       />
-      <span class="input-icon">🔍</span>
+      <span class="gi-icon">🔍</span>
     </div>
 
-    <ul v-if="isOpen && sugerencias.length" class="sugerencias">
-      <li
-        v-for="animal in sugerencias"
-        :key="animal.id"
-        class="sugerencia-item"
-        @mousedown="seleccionar(animal)"
-      >
-        <span class="sugerencia-nombre">{{ animal.nombre }}</span>
-        <span class="sugerencia-cientifico">{{ animal.nombreCientifico }}</span>
-      </li>
-    </ul>
+    <Transition name="gi-list">
+      <ul v-if="isOpen && sugerencias.length" class="gi-sugerencias">
+        <li
+          v-for="animal in sugerencias"
+          :key="animal.id"
+          class="gi-item"
+          @mousedown="seleccionar(animal)"
+        >
+          <span class="gi-nombre">{{ animal.nombre }}</span>
+          <span class="gi-cientifico">{{ animal.nombreCientifico }}</span>
+        </li>
+      </ul>
+    </Transition>
   </div>
 </template>
 
 <style scoped>
-.guess-input { position: relative; width: 100%; max-width: 480px; margin: 0 auto; }
-
-.input-wrap  { position: relative; }
-
-.input {
+.gi-wrap {
+  position: relative;
   width: 100%;
-  padding: .8rem 2.8rem .8rem 1rem;
-  border: 2px solid #d0e8da;
-  border-radius: 999px;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color .2s;
-  box-sizing: border-box;
-
-  &:focus { border-color: #2d6a4f; }
-  &:disabled { opacity: .5; cursor: not-allowed; }
+  max-width: 520px;
+  font-family: 'Roboto Condensed', system-ui, sans-serif;
 }
 
-.input-icon {
+.gi-input-row { position: relative; }
+
+.gi-input {
+  width: 100%;
+  padding: .75rem 2.8rem .75rem 1.2rem;
+  background: #1e271f;
+  border: 1px solid rgba(149,159,3,.3);
+  border-radius: 3px;
+  color: #d0d8d0;
+  font-size: .95rem;
+  font-family: inherit;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color .2s, box-shadow .2s;
+
+  &::placeholder { color: #445044; }
+
+  &:focus {
+    border-color: #959f03;
+    box-shadow: 0 0 0 3px rgba(149,159,3,.12);
+  }
+
+  &:disabled { opacity: .4; cursor: not-allowed; }
+}
+
+.gi-icon {
   position: absolute;
-  right: 1rem;
+  right: .9rem;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
+  font-size: .9rem;
+  opacity: .5;
 }
 
-.sugerencias {
+/* Lista de sugerencias */
+.gi-sugerencias {
   position: absolute;
-  top: calc(100% + .4rem);
+  top: calc(100% + 4px);
   left: 0; right: 0;
-  background: #fff;
-  border: 1px solid #d0e8da;
-  border-radius: 1rem;
+  background: #1e271f;
+  border: 1px solid rgba(149,159,3,.25);
+  border-radius: 3px;
   list-style: none;
-  margin: 0; padding: .4rem 0;
-  box-shadow: 0 4px 16px rgba(0,0,0,.12);
-  z-index: 10;
+  margin: 0; padding: .3rem 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  z-index: 20;
 }
 
-.sugerencia-item {
+.gi-item {
   display: flex;
   flex-direction: column;
-  padding: .6rem 1rem;
+  padding: .55rem 1rem;
   cursor: pointer;
   transition: background .15s;
 
-  &:hover { background: #e9f5ee; }
+  &:hover { background: rgba(149,159,3,.12); }
 }
 
-.sugerencia-nombre    { font-weight: 600; color: #1a4731; }
-.sugerencia-cientifico { font-size: .8rem; color: #888; font-style: italic; }
+.gi-nombre {
+  font-weight: 700;
+  font-size: .88rem;
+  color: #d0d8d0;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+.gi-cientifico {
+  font-size: .72rem;
+  font-style: italic;
+  color: #556055;
+}
+
+/* Animación lista */
+.gi-list-enter-active { transition: opacity .15s, transform .15s; }
+.gi-list-leave-active { transition: opacity .1s, transform .1s; }
+.gi-list-enter-from   { opacity: 0; transform: translateY(-4px); }
+.gi-list-leave-to     { opacity: 0; }
 </style>
