@@ -48,7 +48,11 @@ TaxoQuest CR es un minijuego educativo de un nivel que reta al usuario a adivina
 - `public/sounds/Victoria triunfante.mp3`
 
 ## Capturas de pantalla
-- Las capturas de pantalla del flujo de inicio, juego y resultado pueden agregarse en una carpeta como `screenshots/`.
+![Pantalla de inicio](src/assets/pantallaDeInicio.png)
+
+![Pantalla de juego](src/assets/pantallaDeJuego.png)
+
+![Pantalla de resultado](src/assets/pantallaDeResultado.png)
 
 ## Notas adicionales
 - La elección de framework es **Vue 3** desde la inicialización del proyecto y se mantuvo durante todo el desarrollo.
