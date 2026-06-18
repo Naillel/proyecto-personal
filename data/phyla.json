@@ -1,0 +1,17 @@
+[
+  {
+    "filo": "Chordata",
+    "nombre": "Cordados",
+    "descripcion": "Organismos con notocorda en algún estadio del desarrollo; incluye peces, anfibios, reptiles, aves y mamíferos. Presentan sistema nervioso dorsal y simetría bilateral."
+  },
+  {
+    "filo": "Arthropoda",
+    "nombre": "Artrópodos",
+    "descripcion": "El mayor filo animal: invertebrados con exoesqueleto, apéndices articulados y cuerpo segmentado. Incluye insectos, arácnidos, crustáceos y miriápodos."
+  },
+  {
+    "filo": "Mollusca",
+    "nombre": "Moluscos",
+    "descripcion": "Invertebrados con cuerpo blando; a menudo con concha. Incluye gasterópodos, bivalvos y cefalópodos como pulpos y calamares."
+  }
+]
