@@ -1,17 +1,16 @@
 ﻿<script setup>
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useGameLogic } from '../composables/useGameLogic.js'
 import GuessInput      from './GuessInput.vue'
 import TaxonomyRow     from './TaxonomyRow.vue'
 import ArbolTaxonomico from './ArbolTaxonomico.vue'
 
-const props = defineProps({ resumeState: { type: Object, default: null } })
 const emit = defineEmits(['end'])
 
 const {
   intentos, secreto, isLoading, isGameOver,
   isWon, loadError, animalesDisponibles,
-  iniciarJuego, iniciarJuegoConEstado, hacerIntento
+  iniciarJuego, hacerIntento
 } = useGameLogic()
 
 const sonidos = {
@@ -20,44 +19,22 @@ const sonidos = {
   victoria: new Audio('/sounds/Victoria triunfante.mp3'),
 }
 
-// Overlay de victoria
 const isOverlayVisible = ref(false)
-
-// Historial expandido
-const isExpandido = ref(false)
+const isExpandido      = ref(false)
 
 const intentosMostrados = computed(() =>
   isExpandido.value ? intentos.value : intentos.value.slice(0, 5)
 )
-
 const hayMas = computed(() => intentos.value.length > 5)
 
-const _emittedEnd = ref(false)
-
-onMounted(() => {
-  if (props.resumeState) iniciarJuegoConEstado(props.resumeState)
-  else iniciarJuego()
-})
-
-// Emitir 'end' cuando el juego termina por alcanzar el maximo de intentos
-watch(isGameOver, (v) => {
-  if (!v || _emittedEnd.value) return
-  // Enviar estado final al contenedor (App.vue)
-  emit('end', { isWon: isWon.value, secreto: secreto.value, intentos: intentos.value })
-  _emittedEnd.value = true
-})
+onMounted(iniciarJuego)
 
 function onGuess(animal) {
   hacerIntento(animal)
   const ultimo = intentos.value[0]
   if (ultimo.isGanador) {
     sonidos.victoria.play()
-      setTimeout(() => { isOverlayVisible.value = true }, 600)
-      // Emitir resultado final para que la pantalla de resultado pueda mostrarse
-      if (!_emittedEnd.value) {
-        emit('end', { isWon: true, secreto: secreto.value, intentos: intentos.value })
-        _emittedEnd.value = true
-      }
+    setTimeout(() => { isOverlayVisible.value = true }, 600)
   } else {
     const hayCalor = ultimo.niveles.some(n => n.calor !== 'cold')
     hayCalor ? sonidos.acierto.play() : sonidos.error.play()
@@ -68,7 +45,7 @@ function verPartida() {
   isOverlayVisible.value = false
 }
 
-function jugarDeNuevo() {
+function reiniciarJuego() {
   isOverlayVisible.value = false
   emit('end', { isWon: true, secreto: secreto.value, reiniciar: true })
 }
@@ -77,17 +54,25 @@ function jugarDeNuevo() {
 <template>
   <section class="game-board">
 
-    <!-- Header -->
     <header class="game-header">
       <div class="header-left">
         <p class="header-kicker">🇨🇷 FAUNA COSTARRICENSE</p>
         <h1 class="header-titulo">TaxoQuest <span class="titulo-acento">CR</span></h1>
         <div class="header-linea" />
       </div>
-      <p class="header-hint">Adivina el animal secreto usando el árbol de la vida</p>
+
+      <!-- Si el juego terminó, mostrar acciones en lugar del hint -->
+      <div v-if="isGameOver" class="header-acciones">
+        <button class="btn-header-victoria" @click="isOverlayVisible = true">
+          Ver resultado 🎉
+        </button>
+        <button class="btn-header-reiniciar" @click="reiniciarJuego">
+          Jugar de nuevo →
+        </button>
+      </div>
+      <p v-else class="header-hint">Adivina el animal secreto usando el árbol de la vida</p>
     </header>
 
-    <!-- Carga -->
     <div v-if="isLoading" class="estado-msg">
       <span class="estado-dot-anim" /> Cargando fauna...
     </div>
@@ -121,7 +106,6 @@ function jugarDeNuevo() {
               </li>
             </ul>
 
-            <!-- Ver más / Ver menos -->
             <button
               v-if="hayMas"
               class="btn-ver-mas"
@@ -135,58 +119,38 @@ function jugarDeNuevo() {
         </div>
 
         <div class="col-arbol">
-          <ArbolTaxonomico
-            :intentos="intentos"
-            :is-game-over="isGameOver"
-          />
+          <ArbolTaxonomico :intentos="intentos" :is-game-over="isGameOver" />
         </div>
       </div>
     </template>
 
-    <!-- ── Overlay de victoria ── -->
     <Transition name="overlay-fade">
       <div v-if="isOverlayVisible" class="overlay" @click.self="verPartida">
         <div class="overlay-card">
-
           <div class="overlay-confetti">🎉</div>
-
           <p class="overlay-kicker">¡ANIMAL ENCONTRADO!</p>
           <div class="overlay-linea" />
 
-          <img
-            v-if="secreto?.imagen"
-            :src="secreto.imagen"
-            :alt="secreto.nombre"
-            class="overlay-img"
-          />
+          <img v-if="secreto?.imagen" :src="secreto.imagen" :alt="secreto.nombre" class="overlay-img" />
 
           <h2 class="overlay-nombre">{{ secreto?.nombre }}</h2>
           <p class="overlay-cientifico">{{ secreto?.nombreCientifico }}</p>
 
           <div class="overlay-taxonomia">
-            <div
-              v-for="(valor, clave) in secreto?.taxonomia"
-              :key="clave"
-              class="overlay-tax-item"
-            >
+            <div v-for="(valor, clave) in secreto?.taxonomia" :key="clave" class="overlay-tax-item">
               <span class="overlay-tax-key">{{ clave }}</span>
               <span class="overlay-tax-val">{{ valor }}</span>
             </div>
           </div>
 
           <div class="overlay-acciones">
-            <button class="btn-ver-partida" @click="verPartida">
-              Ver partida
-            </button>
-            <button class="btn-nuevo-juego" @click="jugarDeNuevo">
-              Jugar de nuevo →
-            </button>
+            <button class="btn-ver-partida" @click="verPartida">Ver partida</button>
+            <button class="btn-nuevo-juego" @click="reiniciarJuego">Jugar de nuevo →</button>
           </div>
 
           <p class="overlay-intentos-txt">
             Lo lograste en {{ intentos.length }} intento{{ intentos.length !== 1 ? 's' : '' }}
           </p>
-
         </div>
       </div>
     </Transition>
@@ -195,6 +159,45 @@ function jugarDeNuevo() {
 </template>
 
 <style scoped>
+.header-acciones {
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+
+.btn-header-victoria {
+  background: rgba(82,183,136,.12);
+  border: 1px solid rgba(82,183,136,.35);
+  border-radius: 3px;
+  color: #52b788;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: .55rem 1rem;
+  cursor: pointer;
+  font-family: 'Roboto Condensed', system-ui, sans-serif;
+  transition: background .2s;
+
+  &:hover { background: rgba(82,183,136,.22); }
+}
+
+.btn-header-reiniciar {
+  background: #959f03;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: .55rem 1rem;
+  cursor: pointer;
+  font-family: 'Roboto Condensed', system-ui, sans-serif;
+  transition: background .2s;
+
+  &:hover { background: #787c03; }
+}
 .game-board {
   min-height: 100svh;
   background: #111a12;

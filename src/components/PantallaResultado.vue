@@ -16,8 +16,14 @@ function onImgError(e) {
 <template>
   <section class="resultado">
     <div class="resultado-card">
+
+      <p class="resultado-kicker">
+        {{ isWon ? '🇨🇷 FAUNA COSTARRICENSE' : '🇨🇷 FAUNA COSTARRICENSE' }}
+      </p>
+      <div class="resultado-linea" />
+
       <span :class="['resultado-banner', isWon ? 'ganaste' : 'perdiste']">
-        {{ isWon ? '¡Lo lograste!' : '¡Casi!' }}
+        {{ isWon ? '¡Animal encontrado!' : '¡Casi lo logras!' }}
       </span>
 
       <img
@@ -32,138 +38,202 @@ function onImgError(e) {
       <p class="secreto-cientifico">{{ secreto?.nombreCientifico ?? '—' }}</p>
 
       <div class="taxonomia-grid" v-if="secreto">
-        <div class="tax-item" v-for="(valor, clave) in secreto.taxonomia" :key="clave">
+        <div
+          class="tax-item"
+          v-for="(valor, clave) in secreto.taxonomia"
+          :key="clave"
+        >
           <span class="tax-key">{{ clave }}</span>
           <span class="tax-val">{{ valor }}</span>
         </div>
       </div>
 
-      <div style="width:100%; display:flex; gap:.6rem;">
+      <div class="resultado-acciones">
         <button class="btn-ver-partida" @click="emit('view')">
           Ver partida
         </button>
         <button class="btn-reiniciar" @click="emit('restart')">
-          Jugar de nuevo
+          Jugar de nuevo →
         </button>
       </div>
+
     </div>
   </section>
 </template>
-
 <style scoped>
 .resultado {
   min-height: 100dvh;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(180deg, #f8fdf8 0%, #eef7ee 100%);
-  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111a12;
+  padding: 1rem;
+  font-family: 'Roboto Condensed', system-ui, sans-serif;
+  overflow-y: auto;
 }
 
 .resultado-card {
-  background: #ffffff;
-  border: 1px solid rgba(45, 106, 79, 0.14);
-  border-radius: 20px;
-  padding: 2rem;
-  max-width: 520px;
+  background: #161d17;
+  border: 1px solid rgba(149,159,3,.25);
+  border-radius: 6px;
+  padding: 1.2rem 1.5rem;
+  max-width: 480px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  box-shadow: 0 20px 42px rgba(45, 106, 79, .1);
+  gap: .6rem;
+  box-shadow: 0 32px 64px rgba(0,0,0,.5);
+  animation: cardIn .4s cubic-bezier(.22,1,.36,1);
+  margin: auto;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.resultado-kicker {
+  font-size: .6rem;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: #959f03;
+  margin: 0;
+}
+
+.resultado-linea {
+  width: 28px;
+  height: 3px;
+  background: #959f03;
 }
 
 .resultado-banner {
-  font-size: 1.3rem;
-  font-weight: 800;
-  padding: .7rem 1.4rem;
-  border-radius: 999px;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: .35rem .9rem;
+  border-radius: 3px;
 }
 
-.resultado-banner.ganaste { background: #dcfce7; color: #12351d; }
-.resultado-banner.perdiste { background: #fee2e2; color: #7f1d1d; }
+.resultado-banner.ganaste {
+  background: rgba(82,183,136,.15);
+  color: #52b788;
+  border: 1px solid rgba(82,183,136,.3);
+}
 
+.resultado-banner.perdiste {
+  background: rgba(248,113,113,.1);
+  color: #f87171;
+  border: 1px solid rgba(248,113,113,.25);
+}
+
+/* Fila superior: imagen + nombre */
 .secreto-img {
-  width: 140px;
-  height: 140px;
+  width: 72px;
+  height: 72px;
   object-fit: cover;
-  border-radius: 16px;
-  border: 2px solid var(--border);
-  background: var(--code-bg);
+  border-radius: 4px;
+  border: 1px solid rgba(149,159,3,.3);
+  background: #1e271f;
 }
 
 .secreto-nombre {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #000000;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #fff;
   margin: 0;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  line-height: 1;
 }
 
 .secreto-cientifico {
-  font-size: .9rem;
+  font-size: .78rem;
   font-style: italic;
-  color: #111111;
-  opacity: .8;
-  margin: -.4rem 0 0;
+  color: #556055;
+  margin: -.2rem 0 0;
 }
 
+/* Taxonomía: fila horizontal compacta */
 .taxonomia-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: .5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
   width: 100%;
+  justify-content: center;
 }
 
 .tax-item {
-  background: var(--code-bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: .65rem .85rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(149,159,3,.12);
+  border-radius: 3px;
+  padding: .35rem .6rem;
   display: flex;
   flex-direction: column;
-  gap: .2rem;
+  gap: .1rem;
+  min-width: 80px;
+  flex: 1 1 80px;
 }
 
 .tax-key {
-  font-size: .68rem;
+  font-size: .55rem;
   font-weight: 700;
-  text-transform: capitalize;
-  color: var(--accent);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #959f03;
 }
 
 .tax-val {
-  font-size: .92rem;
-  font-weight: 600;
-  color: var(--text-h);
+  font-size: .78rem;
+  font-weight: 700;
+  color: #d0d8d0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Botones */
+.resultado-acciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+  width: 100%;
+  margin-top: .2rem;
+}
+
+.btn-ver-partida {
+  background: none;
+  border: 1px solid rgba(149,159,3,.3);
+  border-radius: 3px;
+  color: #959f03;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: .65rem;
+  cursor: pointer;
+  font-family: 'Roboto Condensed', system-ui, sans-serif;
+  transition: background .2s;
+
+  &:hover { background: rgba(149,159,3,.1); }
 }
 
 .btn-reiniciar {
-  width: 100%;
-  background: var(--accent);
-  color: #fff;
+  background: #959f03;
   border: none;
-  border-radius: 12px;
-  padding: .95rem;
-  font-size: 1rem;
+  border-radius: 3px;
+  color: #fff;
+  font-size: .75rem;
   font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: .65rem;
   cursor: pointer;
-  transition: opacity .2s, transform .1s;
+  font-family: 'Roboto Condensed', system-ui, sans-serif;
+  transition: background .2s;
+
+  &:hover { background: #787c03; }
 }
-
-.btn-reiniciar:hover { opacity: .9; transform: translateY(-1px); }
-
-.btn-ver-partida {
-  width: 100%;
-  background: none;
-  border: 1px solid rgba(45,106,79,.25);
-  border-radius: 12px;
-  color: var(--accent);
-  padding: .95rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background .15s;
-}
-
-.btn-ver-partida:hover { background: rgba(45,106,79,.06); }
 </style>
