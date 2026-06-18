@@ -5,12 +5,16 @@ import GuessInput      from './GuessInput.vue'
 import TaxonomyRow     from './TaxonomyRow.vue'
 import ArbolTaxonomico from './ArbolTaxonomico.vue'
 
+const props = defineProps({
+  resumeState: { type: Object, default: null }
+})
+
 const emit = defineEmits(['end'])
 
 const {
   intentos, secreto, isLoading, isGameOver,
   isWon, loadError, animalesDisponibles,
-  iniciarJuego, hacerIntento
+  iniciarJuego, iniciarJuegoConEstado, hacerIntento
 } = useGameLogic()
 
 const sonidos = {
@@ -27,7 +31,13 @@ const intentosMostrados = computed(() =>
 )
 const hayMas = computed(() => intentos.value.length > 5)
 
-onMounted(iniciarJuego)
+onMounted(() => {
+  if (props.resumeState) {
+    iniciarJuegoConEstado(props.resumeState)
+  } else {
+    iniciarJuego()
+  }
+})
 
 function onGuess(animal) {
   hacerIntento(animal)
@@ -47,7 +57,7 @@ function verPartida() {
 
 function reiniciarJuego() {
   isOverlayVisible.value = false
-  emit('end', { isWon: true, secreto: secreto.value, reiniciar: true })
+  iniciarJuego()
 }
 </script>
 
@@ -63,14 +73,11 @@ function reiniciarJuego() {
 
       <!-- Si el juego terminó, mostrar acciones en lugar del hint -->
       <div v-if="isGameOver" class="header-acciones">
-        <button class="btn-header-victoria" @click="isOverlayVisible = true">
-          Ver resultado 🎉
-        </button>
-        <button class="btn-header-reiniciar" @click="reiniciarJuego">
-          Jugar de nuevo →
-        </button>
-      </div>
-      <p v-else class="header-hint">Adivina el animal secreto usando el árbol de la vida</p>
+  <button class="btn-header-reiniciar" @click="reiniciarJuego">
+    Jugar de nuevo →
+  </button>
+</div>
+<p v-else class="header-hint">Adivina el animal secreto usando el árbol de la vida</p>
     </header>
 
     <div v-if="isLoading" class="estado-msg">
@@ -144,9 +151,13 @@ function reiniciarJuego() {
           </div>
 
           <div class="overlay-acciones">
-            <button class="btn-ver-partida" @click="verPartida">Ver partida</button>
-            <button class="btn-nuevo-juego" @click="reiniciarJuego">Jugar de nuevo →</button>
-          </div>
+  <button class="btn-ver-partida" @click.stop="verPartida">
+    Ver partida
+  </button>
+  <button class="btn-nuevo-juego" @click.stop="reiniciarJuego">
+    Jugar de nuevo →
+  </button>
+</div>
 
           <p class="overlay-intentos-txt">
             Lo lograste en {{ intentos.length }} intento{{ intentos.length !== 1 ? 's' : '' }}
@@ -454,13 +465,28 @@ function reiniciarJuego() {
   color: #d0d8d0;
 }
 
-/* Botones de acción */
 .overlay-acciones {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: .6rem;
+  display: flex;
   width: 100%;
   margin-top: .3rem;
+}
+
+.btn-nuevo-juego {
+  width: 100%;
+  background: #959f03;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: .75rem;
+  cursor: pointer;
+  font-family: 'Roboto Condensed', system-ui, sans-serif;
+  transition: background .2s;
+
+  &:hover { background: #787c03; }
 }
 
 .btn-ver-partida {
